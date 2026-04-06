@@ -32,7 +32,7 @@ function loadConfig(env = process.env) {
   const config = {
     nodeEnv: env.NODE_ENV || 'development',
     host: env.HOST || '0.0.0.0',
-    port: Number(env.PORT || 3000),
+    port: Number(env.PORT || 3001),
 
     // CORS
     allowedOrigins: _parseCsv(env.ALLOWED_ORIGINS, ['*']),
