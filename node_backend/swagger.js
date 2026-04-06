@@ -4,10 +4,17 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'My Express API',
+      title: 'VS Code AI Assistant Backend',
       version: '1.0.0',
-      description: 'A simple Express API documented with Swagger',
-    }
+      description:
+        'Local backend for orchestration, tool-calling, settings, chat history, confirmations, and telemetry opt-in.',
+    },
+    tags: [
+      { name: 'Settings' },
+      { name: 'Chat' },
+      { name: 'Confirmations' },
+      { name: 'Telemetry' },
+    ],
   },
   apis: ['./src/routes/*.js'], // Path to the API docs
 };

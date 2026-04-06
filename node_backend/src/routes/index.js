@@ -1,7 +1,14 @@
 const express = require('express');
 const healthController = require('../controllers/health');
+const { composeAppServices } = require('../compose');
+const { createApiRouter } = require('./api');
 
 const router = express.Router();
+
+// Compose dependencies once for the router instance.
+// In production this is fine (single process). In tests we can import app factory instead.
+const { controllers } = composeAppServices();
+
 // Health endpoint
 
 /**
@@ -31,5 +38,8 @@ const router = express.Router();
  *                   example: development
  */
 router.get('/', healthController.check.bind(healthController));
+
+// API endpoints
+router.use('/api', createApiRouter(controllers));
 
 module.exports = router;
